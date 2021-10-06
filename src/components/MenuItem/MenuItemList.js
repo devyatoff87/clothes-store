@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MenuItem from "../MenuItem/MenuItem";
+import MenuItem from "./MenuItem";
 
 const MenuItemlist = ({ items }) => {
   const [itemsState, setItemsState] = useState(() => items);
@@ -12,6 +12,7 @@ const MenuItemlist = ({ items }) => {
             imageUrl={item.imageUrl}
             id={item.id}
             linkUrl={item.linkUrl}
+            size={item.size}
             key={item.id}
           />
         );
