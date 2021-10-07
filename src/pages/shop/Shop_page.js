@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./shop-style.scss";
 import shopData from "../../data/shop-data.json";
-import PreviewCollection from "../../components/previewCollection/PreviewCollection_comp";
+import CollectionPreview from "../../components/collectionPreview/CollectionPreview_comp";
 const Shop = () => {
   const [state, setState] = useState(() => shopData);
 
   return (
-    <div>
+    <div className={"container"}>
       <h1>Shop</h1>
       <div>
         {shopData.map(({ id, ...otherProps }) => {
-          return <PreviewCollection key={id} {...otherProps} />;
+          return <CollectionPreview key={id} {...otherProps} />;
         })}
       </div>
     </div>
