@@ -1,8 +1,7 @@
 import React from "react";
 import MenuItemlist from "../../components/menuItem/MenuItemList_comp";
 import items from "../../data/directory-data.json";
-import "./homepage.styles.scss";
-
+import "./Home_style.scss";
 const Home = () => {
   return (
     <div className={"container-wide"}>

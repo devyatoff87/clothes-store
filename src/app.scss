@@ -9,17 +9,16 @@ html {
 
 .container {
   max-width: 80%;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 
 @media only screen and (max-width: 578.9px) {
   .container {
     max-width: 94%;
-    margin-bottom: 32px;
   }
 }
 
 .container-wide {
   max-width: 94%;
-  margin: 20px auto;
+  margin: 0 auto;
 }
