@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SignIn_style.scss";
-import FormInput from "../form/FormInput_comp";
-import Button from "../button/Button_comp";
+import FormInput from "../../atoms/form-input/FormInput_comp";
+import Button from "../../atoms/button/Button_comp";
 
 const SignIn = () => {
   const initState = { email: "", password: "" };

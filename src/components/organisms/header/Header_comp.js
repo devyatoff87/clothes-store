@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header_style.scss";
-import { ReactComponent as Logo } from "../../data/crown.svg";
+import { ReactComponent as Logo } from "../../../data/crown.svg";
 import { Link } from "react-router-dom";
 
 const HeaderComp = () => {
@@ -16,10 +16,10 @@ const HeaderComp = () => {
           </div>
           <div className={"options"}>
             <Link to={"shop"} className={"option"}>
-              To shop
+              Shop
             </Link>
             <Link to={"contact"} className={"option"}>
-              To contact
+              Contact
             </Link>
           </div>
         </div>

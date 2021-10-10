@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./shop-style.scss";
-import shopData_ from "../../data/shop-data.json";
-import CollectionPreview from "../../components/collectionPreview/CollectionPreview_comp";
+import shopData_ from "../../../data/shop-data.json";
+import CollectionPreview from "../../organisms/collection-preview/CollectionPreview_comp";
 
 const Shop = () => {
   const [shopData, sethShopData] = useState(() => shopData_);

@@ -2,12 +2,12 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./app.scss";
 
-import Header from "./components/header/Header_comp";
+import Header from "./components/organisms/header/Header_comp";
 
-import Home from "./pages/home/Home_page";
-import Hats from "./pages/hats/Hats_page";
-import Shop from "./pages/shop/Shop_page";
-import Auth from "./pages/auth/Auth_page";
+import Home from "./components/pages/home/Home_page";
+import Hats from "./components/pages/hats/Hats_page";
+import Shop from "./components/pages/shop/Shop_page";
+import Auth from "./components/pages/auth/Auth_page";
 
 function App() {
   return (
