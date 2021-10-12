@@ -1,5 +1,5 @@
 import React from "react";
-import SignIn from "../../organisms/sign-in/SignIn_comp";
+import SignIn from "components/organisms/sign-in/SignIn_comp";
 
 const Auth = () => {
   return (

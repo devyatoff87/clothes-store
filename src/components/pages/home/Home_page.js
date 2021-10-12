@@ -1,6 +1,6 @@
 import React from "react";
-import MenuItemlist from "../../organisms/menu-item-list/MenuItemList_comp";
-import items from "../../../data/directory-data.json";
+import MenuItemlist from "components/organisms/menu-item-list/MenuItemList_comp";
+import items from "data/directory-data.json";
 import "./Home_style.scss";
 
 const Home = () => {

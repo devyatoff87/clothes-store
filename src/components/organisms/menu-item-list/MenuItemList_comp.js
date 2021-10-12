@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MenuItem from "../../molecules/menu-item/MenuItem_comp";
+import MenuItem from "components/molecules/menu-item/MenuItem_comp";
 import "./menuItemList.scss";
 
 const MenuItemlist = ({ items }) => {

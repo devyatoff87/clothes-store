@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./SignIn_style.scss";
-import FormInput from "../../atoms/form-input/FormInput_comp";
-import Button from "../../atoms/button/Button_comp";
+import FormInput from "components/atoms/form-input/FormInput_comp";
+import Button from "components/atoms/button/Button_comp";
+import { signInWithGoogle } from "firebase/firebaseUtils";
 
 const SignIn = () => {
   const initState = { email: "", password: "" };
@@ -39,6 +40,7 @@ const SignIn = () => {
           label={"Password"}
         />
         <Button type="submit">Submit</Button>
+        <Button onClickProps={signInWithGoogle}>Sign in with google</Button>
       </form>
     </div>
   );
