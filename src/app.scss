@@ -16,6 +16,31 @@ html {
   margin: 0 auto;
 }
 
+.row {
+  display: flex;
+  margin: 0 -15px;
+}
+
+.col {
+  padding: 15px;
+  width: 100%;
+}
+
+.sign-in,
+.sign-up {
+  .title {
+    font-family: "Oswald";
+    line-height: 1.222em;
+    margin: 0 0 15px;
+    font-size: 2rem;
+  }
+
+  .sub-title {
+    letter-spacing: 1.5px;
+    color: #505050;
+  }
+}
+
 @media only screen and (max-width: 578.9px) {
   .container {
     max-width: 94%;
