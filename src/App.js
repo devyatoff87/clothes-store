@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "app.scss";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth, db, createUserProfileDoc } from "firebase/firebaseUtils";
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
-import { getUsers } from "firebase/firebaseUtils";
+
 import Header from "components/organisms/header/Header_comp";
 import Home from "components/pages/home/Home_page";
 import Hats from "components/pages/hats/Hats_page";
@@ -12,36 +9,7 @@ import Shop from "components/pages/shop/Shop_page";
 import Auth from "components/pages/auth/Auth_page";
 
 function App() {
-  const [users, setUsers] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
   //data.docs[0]._document.data.value.mapValue.fields
-
-  useEffect(() => {
-    getUsers().then((data) => {
-      setUsers((prev) => {
-        return (prev = data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      });
-    });
-
-    onAuthStateChanged(auth, async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDoc(userAuth);
-        onSnapshot(userRef, (snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-        return;
-      }
-      setCurrentUser(userAuth);
-    });
-  }, []);
-
-  useEffect(() => {
-    currentUser && console.log(currentUser);
-  }, [currentUser]);
-
   return (
     <>
       <Header />

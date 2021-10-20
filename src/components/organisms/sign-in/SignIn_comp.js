@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./SignIn_style.scss";
 import FormInput from "components/atoms/form-input/FormInput_comp";
 import Button from "components/atoms/button/Button_comp";
-import { signInWithGoogle } from "firebase/firebaseUtils";
+import { auth, signInWithGoogle } from "firebase/firebaseUtils";
+import { signInWithEmailAndPassword } from "@firebase/auth";
 
 const SignIn = () => {
   const initState = { email: "", password: "" };
 
   const [state, setState] = useState(initState);
 
-  const onSubmitHandle = (e) => {
+  const onSubmitHandle = async (e) => {
     e.preventDefault();
-    setState(initState);
+    const { email, password } = state;
+    if (email === "" && password === "") {
+      return;
+    }
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setState(initState);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const onChangeHandle = (e) => {
@@ -39,8 +49,12 @@ const SignIn = () => {
           value={state.password}
           label={"Password"}
         />
-        <Button type="submit">Submit</Button>
-        <Button onClickProps={signInWithGoogle}>Sign in with google</Button>
+        <Button onClickProps={(e) => onSubmitHandle(e)} type="submit">
+          Submit
+        </Button>
+        <Button additionalStyle={"ml-2"} onClickProps={signInWithGoogle}>
+          Sign in with google
+        </Button>
       </form>
     </div>
   );

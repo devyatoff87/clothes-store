@@ -49,8 +49,9 @@ export const createUserProfileDoc = async (userAuth, payload) => {
 };
 
 export const getUsers = async () => {
-  let data = await getDocs(collection(db, "users"));
-  return data;
+  const userRef = collection(db, "users");
+  let users = await getDocs(userRef);
+  return users;
 };
 
 const provider = new GoogleAuthProvider();
