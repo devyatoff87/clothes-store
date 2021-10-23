@@ -1,12 +1,12 @@
-import { ACTIONS } from "redux/actions";
+import { USER_ACTIONS } from "./userActionTypes";
 
-const INIT_STATE = {
+const INIT_USER = {
   currentUser: null,
 };
 
-const userReducer = (state = INIT_STATE, action) => {
+const userReducer = (state = INIT_USER, action) => {
   switch (action.type) {
-    case ACTIONS.SET_CURRENT_USER:
+    case USER_ACTIONS.SET_CURRENT_USER:
       return {
         ...state,
         currentUser: action.payload,

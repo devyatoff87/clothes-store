@@ -3,9 +3,12 @@ import "./Header_style.scss";
 import { ReactComponent as Logo } from "../../../data/crown.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { setCurrentUser } from "redux/user/userActions";
+import { auth } from "../../../firebase/firebaseUtils";
+import { signOut } from "firebase/auth";
+import CartIcon from "components/molecules/cart/cart-icon/CartIcon_comp";
+import CartDropdown from "components/molecules/cart/cart-dropdown/CartDropdown_comp";
 
-const HeaderComp = ({ currentUser }) => {
+const HeaderComp = ({ currentUser, hidden }) => {
   return (
     <div className={"header"}>
       <div className={"container-wide"}>
@@ -20,7 +23,9 @@ const HeaderComp = ({ currentUser }) => {
               Shop
             </Link>
             {currentUser ? (
-              <div className={"option"}>Sign out</div>
+              <div className={"option"} onClick={() => signOut(auth)}>
+                Sign out
+              </div>
             ) : (
               <Link to={"/auth"} className={"option"}>
                 Sign in
@@ -29,11 +34,18 @@ const HeaderComp = ({ currentUser }) => {
             <Link to={"contact"} className={"option"}>
               Contact
             </Link>
+            <CartIcon />
           </div>
+          {hidden ? <CartDropdown /> : null}
         </div>
       </div>
     </div>
   );
 };
 
-export default HeaderComp;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+  hidden: state.cart.hidden,
+});
+
+export default connect(mapStateToProps, null)(HeaderComp);
