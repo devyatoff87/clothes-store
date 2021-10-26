@@ -1,10 +1,10 @@
 import React from "react";
 import "./Button_style.scss";
-const Button = ({ children, onClickProps, additionalStyle }) => {
+const Button = ({ children, onClickProps, inverted }) => {
   return (
     <button
       onClick={onClickProps}
-      className={`custom-button ${additionalStyle}`}
+      className={`custom-button ${inverted && "inverted"}`}
     >
       {children}
     </button>

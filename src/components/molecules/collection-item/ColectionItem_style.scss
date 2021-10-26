@@ -4,6 +4,16 @@
   flex-direction: column;
   height: 350px;
   align-items: center;
+  position: relative;
+
+  .custom-button {
+    position: absolute;
+    bottom: 20%;
+    opacity: 0.4;
+    &:hover {
+      opacity: 1;
+    }
+  }
 
   .image {
     width: 100%;
