@@ -14,6 +14,54 @@ html {
 .container {
   max-width: 80%;
   margin: 0 auto;
+  &-narrow {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  &-wide {
+    max-width: 94%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    &-narrow {
+      max-width: 50%;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    &-narrow {
+      max-width: 60%;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    max-width: 94%;
+    &-narrow {
+      max-width: 94%;
+    }
+  }
+}
+
+.msg-1 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 130%;
+}
+
+.absolute-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .row {
@@ -46,15 +94,4 @@ html {
     letter-spacing: 1.5px;
     color: #505050;
   }
-}
-
-@media only screen and (max-width: 578.9px) {
-  .container {
-    max-width: 94%;
-  }
-}
-
-.container-wide {
-  max-width: 94%;
-  margin: 0 auto;
 }

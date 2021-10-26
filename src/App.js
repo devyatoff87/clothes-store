@@ -7,6 +7,7 @@ import Home from "components/pages/home/Home_page";
 import Hats from "components/pages/hats/Hats_page";
 import Shop from "components/pages/shop/Shop_page";
 import Auth from "components/pages/auth/Auth_page";
+import Checkout from "components/pages/checkout/Checkout_page";
 
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, createUserProfileDoc } from "firebase/firebaseUtils";
@@ -14,6 +15,8 @@ import { onSnapshot } from "firebase/firestore";
 import { getUsers } from "firebase/firebaseUtils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "redux/user/userActions";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "redux/user/userSelectors";
 
 const App = ({ setCurrentUser, currentUser }) => {
   const [users, setUsers] = useState(null);
@@ -59,15 +62,17 @@ const App = ({ setCurrentUser, currentUser }) => {
         <Route exact path="/" component={Home} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/hats" component={Hats} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route component={Home} />
       </Switch>
     </>
   );
 };
 
-const mapStateToProps = ({ user }) => {
-  return { currentUser: user.currentUser };
-};
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });

@@ -1,0 +1,38 @@
+.checkout-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto 0;
+  position: relative;
+  min-width: 400px;
+
+  .checkout-header {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid darkgrey;
+
+    .header-block {
+      text-transform: capitalize;
+    }
+  }
+
+  .total {
+    margin-top: 30px;
+    margin-left: auto;
+    font-size: 2rem;
+    background: whitesmoke;
+    padding: 0.4em 0.6em;
+    box-sizing: border-box;
+  }
+
+  .back2shop-link {
+    margin-top: 25%;
+    color: black;
+    transition: 0.12s;
+    &:hover {
+      color: var(--dirt-yel);
+    }
+  }
+}
