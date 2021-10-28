@@ -9,6 +9,7 @@ const FlexContainer = ({
   height,
   heightMinus,
   children,
+  mediaQuery,
 }) => {
   const styles = {
     display: "flex",
@@ -38,7 +39,11 @@ const FlexContainer = ({
     })(),
   };
 
-  return <div style={{ ...styles }}>{children}</div>;
+  return (
+    <div className={`flex-container ${mediaQuery}`} style={{ ...styles }}>
+      {children}
+    </div>
+  );
 };
 
 export default FlexContainer;

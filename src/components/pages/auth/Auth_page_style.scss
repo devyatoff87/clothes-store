@@ -1,0 +1,15 @@
+.sign-in,
+.sign-up {
+  .custom-button {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .sign-in,
+  .sign-up {
+    .custom-button {
+      width: 100%;
+    }
+  }
+}

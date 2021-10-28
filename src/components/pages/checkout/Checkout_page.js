@@ -3,11 +3,11 @@ import "./Checkout_style.scss";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCartItems, selectCartTotal } from "redux/cart/cartSelectors";
-import CheckoutItem from "components/molecules/checktout-item/CheckoutItem_comp";
+import CheckoutItem from "components/compound/checkout/checktout-item/CheckoutItem_comp";
 
 const Checkout = ({ cartItems, total }) => {
   return (
-    <div className="container-narrow">
+    <div className="container">
       <div className="checkout-page">
         <div className="checkout-header">
           <div className="header-block">

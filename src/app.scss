@@ -1,4 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Oswald:wght@400;600&display=swap");
+@import url("../node_modules/bootstrap/dist/css/bootstrap-grid.min.css");
+
+@media only screen and (max-width: 540px) {
+  .container,
+  .container-fluid,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    width: 93%;
+  }
+}
 
 :root {
   --dirt-yel: #bcb106;
@@ -11,45 +24,57 @@ html {
   padding: 0;
 }
 
-.container {
-  max-width: 80%;
-  margin: 0 auto;
-  &-narrow {
-    max-width: 50%;
-    margin: 0 auto;
-  }
-  &-wide {
-    max-width: 94%;
-    margin: 0 auto;
-  }
-}
+// .container {
+//   max-width: 80%;
+//   margin: 0 auto;
+//   &-narrow {
+//     max-width: 50%;
+//     margin: 0 auto;
+//   }
+//   &-wide {
+//     max-width: 94%;
+//     margin: 0 auto;
+//   }
+// }
 
-@media only screen and (max-width: 1400px) {
-  .container {
-    &-narrow {
-      max-width: 50%;
-      margin: 0 auto;
-    }
-  }
-}
+// @media only screen and (max-width: 1400px) {
+//   .container {
+//     &-narrow {
+//       max-width: 50%;
+//       margin: 0 auto;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 1200px) {
-  .container {
-    &-narrow {
-      max-width: 60%;
-      margin: 0 auto;
-    }
-  }
-}
+// @media only screen and (max-width: 1200px) {
+//   .container {
+//     &-narrow {
+//       max-width: 60%;
+//       margin: 0 auto;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 768px) {
-  .container {
-    max-width: 94%;
-    &-narrow {
-      max-width: 94%;
-    }
-  }
-}
+// @media only screen and (max-width: 768px) {
+//   .container {
+//     max-width: 94%;
+//     &-narrow {
+//       max-width: 94%;
+//     }
+//   }
+// }
+
+// @media only screen and (max-width: 579px) {
+//   .container {
+//     max-width: 97%;
+//     &-narrow {
+//       max-width: 97%;
+//     }
+//     &-wide {
+//       max-width: 97%;
+//     }
+//   }
+// }
 
 .msg-1 {
   font-weight: 600;
@@ -62,36 +87,4 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.row {
-  display: flex;
-  margin: 0 -15px;
-}
-
-.col {
-  padding: 15px;
-  width: 100%;
-}
-
-.ml-2 {
-  margin-left: 15px;
-}
-.mr-2 {
-  margin-right: 15px;
-}
-
-.sign-in,
-.sign-up {
-  .title {
-    font-family: "Oswald";
-    line-height: 1.222em;
-    margin: 0 0 15px;
-    font-size: 2rem;
-  }
-
-  .sub-title {
-    letter-spacing: 1.5px;
-    color: #505050;
-  }
 }

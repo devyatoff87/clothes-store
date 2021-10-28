@@ -1,4 +1,4 @@
-import Button from "components/atoms/button/Button_comp";
+import Button from "components/simple/button/Button_comp";
 import React from "react";
 import "./ColectionItem_style.scss";
 import { addNewItemToCart } from "redux/cart/cartActions";

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { auth } from "../../../firebase/firebaseUtils";
 import { signOut } from "firebase/auth";
-import CartIcon from "components/molecules/cart/cart-icon/CartIcon_comp";
-import CartDropdown from "components/molecules/cart/cart-dropdown/CartDropdown_comp";
+import CartIcon from "components/compound/cart/cart-icon/CartIcon_comp";
+import CartDropdown from "components/compound/cart/cart-dropdown/CartDropdown_comp";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "redux/user/userSelectors";
 import { selectCartHidden } from "redux/cart/cartSelectors";
@@ -14,7 +14,7 @@ import { selectCartHidden } from "redux/cart/cartSelectors";
 const HeaderComp = ({ currentUser, hidden }) => {
   return (
     <div className={"header"}>
-      <div className={"container-wide"}>
+      <div className={"container"}>
         <div className={"header-inner"}>
           <div className={"logo-container"}>
             <Link to={"/"}>

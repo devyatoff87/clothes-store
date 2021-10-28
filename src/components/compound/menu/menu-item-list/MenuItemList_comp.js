@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import MenuItem from "components/molecules/menu-item/MenuItem_comp";
+import React from "react";
+import MenuItem from "components/compound/menu/menu-item/MenuItem_comp";
 import "./menuItemList.scss";
 
 const MenuItemlist = ({ items }) => {
-  const [itemsState, setItemsState] = useState(() => items);
   return (
     <div className={"directory-menu"}>
-      {itemsState.map((item) => {
+      {items.map((item) => {
         return (
           <MenuItem
             title={item.title}

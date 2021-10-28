@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Form_style.scss";
 
 const FormInput = ({ onChangeCallback, label, ...props }) => {
