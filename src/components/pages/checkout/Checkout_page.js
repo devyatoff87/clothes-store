@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCartItems, selectCartTotal } from "redux/cart/cartSelectors";
 import CheckoutItem from "components/compound/checkout/checktout-item/CheckoutItem_comp";
-
-const Checkout = ({ cartItems, total }) => {
+import { removeAll } from "redux/cart/cartActions";
+const Checkout = ({ cartItems, total, dispatch }) => {
   return (
     <div className="container">
       <div className="checkout-page">
@@ -26,7 +26,23 @@ const Checkout = ({ cartItems, total }) => {
             <span>Remove</span>
           </div>
         </div>
-        <div className="total">Total: ${total}.00</div>
+        <div
+          style={{ width: 100 + "%" }}
+          class="d-flex align-items-center justify-content-between"
+        >
+          <div class="clear-all">
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(removeAll());
+              }}
+              href={window.location.href}
+            >
+              Clear all
+            </a>
+          </div>
+          <div class="total">Total: ${total}0.00</div>
+        </div>
         {cartItems.length > 0 ? (
           cartItems.map((cartItem) => (
             <CheckoutItem key={cartItem.id} item={cartItem} />
