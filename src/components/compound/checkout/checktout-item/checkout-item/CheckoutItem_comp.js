@@ -10,25 +10,29 @@ import { connect } from "react-redux";
 const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
   const { name, price, quantity, imageUrl } = item;
   return (
-    <div className="checkout-item">
-      <div className="image-container">
+    <tr className="checkout-item">
+      <td className="image-container">
         <img src={imageUrl} alt="" />
-      </div>
-      <span className="name">{name}</span>
-      <span className="quantity">
-        <div onClick={() => removeItem(item)} className="arrow">
-          &#10094;
+      </td>
+      <td className="name">{name}</td>
+      <td>
+        <div className="quantity">
+          <div onClick={() => removeItem(item)} className="arrow">
+            &#10094;
+          </div>
+          <span className="value">{quantity}</span>
+          <div onClick={() => addItem(item)} className="arrow">
+            &#10095;
+          </div>
         </div>
-        <span className="value">{quantity}</span>
-        <div onClick={() => addItem(item)} className="arrow">
-          &#10095;
+      </td>
+      <td className="price">${price}.00</td>
+      <td>
+        <div onClick={() => clearItem(item)} className="remove-button">
+          <span>&#10006;</span>
         </div>
-      </span>
-      <span className="price">${price}.00</span>
-      <div onClick={() => clearItem(item)} className="remove-button">
-        <span>&#10006;</span>
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 };
 

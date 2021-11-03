@@ -1,0 +1,44 @@
+.checkout-header {
+}
+
+.total {
+  font-size: 2rem;
+  background: gainsboro;
+  padding: 0.4em 0.6em;
+  box-sizing: border-box;
+}
+
+.back2shop-link {
+  margin-top: 17%;
+  color: black;
+  transition: 0.12s;
+  &:hover {
+    color: var(--dirt-yel);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .checkout-header {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 0.88rem;
+
+    .header-block {
+      text-transform: capitalize;
+    }
+
+    .total {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+  }
+
+  .back2shop-link {
+    margin-top: 25%;
+    color: black;
+    transition: 0.12s;
+    &:hover {
+      color: var(--dirt-yel);
+    }
+  }
+}

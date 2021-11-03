@@ -1,7 +1,7 @@
 import shopItems from "../../data/shop-data.json";
 
 const init = {
-  shopItems: shopItems,
+  collections: shopItems,
 };
 
 const shopReducer = (state = init, action) => {

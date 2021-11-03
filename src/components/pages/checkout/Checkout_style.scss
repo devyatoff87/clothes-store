@@ -1,68 +1,56 @@
-.checkout-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px auto 0;
-  position: relative;
+// .checkout-page {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin: 50px auto 0;
+//   position: relative;
 
-  .checkout-header {
-    width: 100%;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid gainsboro;
+//   .total {
+//     margin-top: 30px;
+//     margin-right: 52px;
+//     font-size: 2rem;
+//     background: gainsboro;
+//     padding: 0.4em 0.6em;
+//     box-sizing: border-box;
+//   }
 
-    .header-block {
-      text-transform: capitalize;
-    }
-  }
+//   .back2shop-link {
+//     margin-top: 17%;
+//     color: black;
+//     transition: 0.12s;
+//     &:hover {
+//       color: var(--dirt-yel);
+//     }
+//   }
+// }
 
-  .total {
-    margin-top: 30px;
-    margin-left: auto;
-    font-size: 2rem;
-    background: gainsboro;
-    padding: 0.4em 0.6em;
-    box-sizing: border-box;
-  }
+// @media only screen and (max-width: 768px) {
+//   .checkout-page {
+//     position: relative;
+//     min-width: 400px;
 
-  .back2shop-link {
-    margin-top: 25%;
-    color: black;
-    transition: 0.12s;
-    &:hover {
-      color: var(--dirt-yel);
-    }
-  }
-}
+//     .checkout-header {
+//       width: 100%;
+//       padding: 10px 0;
+//       font-size: 0.88rem;
 
-@media only screen and (max-width: 768px) {
-  .checkout-page {
-    position: relative;
-    min-width: 400px;
+//       .header-block {
+//         text-transform: capitalize;
+//       }
+//     }
 
-    .checkout-header {
-      width: 100%;
-      padding: 10px 0;
-      font-size: 0.88rem;
+//     .total {
+//       margin-top: 0;
+//       font-size: 1.4rem;
+//     }
 
-      .header-block {
-        text-transform: capitalize;
-      }
-    }
-
-    .total {
-      margin-top: 0;
-      font-size: 1.4rem;
-    }
-
-    .back2shop-link {
-      margin-top: 25%;
-      color: black;
-      transition: 0.12s;
-      &:hover {
-        color: var(--dirt-yel);
-      }
-    }
-  }
-}
+//     .back2shop-link {
+//       margin-top: 25%;
+//       color: black;
+//       transition: 0.12s;
+//       &:hover {
+//         color: var(--dirt-yel);
+//       }
+//     }
+//   }
+// }
