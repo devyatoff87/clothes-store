@@ -3,6 +3,7 @@ import SignIn from "components/compound/auth/sign-in/SignIn_comp";
 import SignUp from "components/compound/auth/sign-up/SignUp_comp";
 import "./Auth_page_style.scss";
 const Auth = () => {
+  document.title = "Authorisation";
   return (
     <div className="container">
       <div className="row">

@@ -1,14 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import "app.scss";
-
-import Header from "components/compound/header/Header_comp";
-import Home from "components/pages/home/Home_page";
-import Hats from "components/pages/hats/Hats_page";
-import Shop from "components/pages/shop/Shop_page";
-import Auth from "components/pages/auth/Auth_page";
-import Checkout from "components/pages/checkout/Checkout_page";
-
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, createUserProfileDoc } from "firebase/firebaseUtils";
 import { onSnapshot } from "firebase/firestore";
@@ -17,12 +7,16 @@ import { connect } from "react-redux";
 import { setCurrentUser } from "redux/user/userActions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "redux/user/userSelectors";
+import App from "./App_UI";
 
-const App = ({ setCurrentUser, currentUser }) => {
+const AppMain = ({ currentUser }) => {
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
     getUsers().then((data) => {
+      if (!data) {
+        return;
+      }
       setUsers((prev) => {
         return (prev = data.docs.map((doc) => ({
           ...doc.data(),
@@ -32,7 +26,10 @@ const App = ({ setCurrentUser, currentUser }) => {
     });
 
     let unsubscribe = onAuthStateChanged(auth, async (userAuth) => {
-      if (userAuth) {
+      if (!auth && !userAuth) {
+        return;
+      }
+      if (userAuth && auth) {
         const userRef = await createUserProfileDoc(userAuth);
         onSnapshot(userRef, (snapshot) => {
           setCurrentUser({
@@ -41,8 +38,13 @@ const App = ({ setCurrentUser, currentUser }) => {
           });
         });
         return;
+      } else if (!userAuth && !auth) {
+        console.log("no userAuth");
+        return;
       }
-      setCurrentUser(userAuth);
+      if (userAuth && auth) {
+        setCurrentUser(userAuth);
+      }
     });
 
     return () => {
@@ -52,19 +54,7 @@ const App = ({ setCurrentUser, currentUser }) => {
 
   return (
     <>
-      <Header />
-      <Switch>
-        <Route
-          exact
-          path="/auth"
-          render={() => (currentUser ? <Redirect to="/" /> : <Auth />)}
-        />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/shop" component={Shop} />
-        <Route exact path="/hats" component={Hats} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route component={Home} />
-      </Switch>
+      <App currentUser={currentUser} />
     </>
   );
 };
@@ -77,4 +67,4 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(AppMain);

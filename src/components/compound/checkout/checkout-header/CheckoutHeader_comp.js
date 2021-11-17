@@ -20,7 +20,7 @@ const CheckoutHeader = ({ total }) => {
           </tbody>
         </table>
         <div className="w-100 mt-3 d-flex justify-content-end">
-          <div class="total">Total: ${total}0.00</div>
+          <div className="total">Total: ${total}.00</div>
         </div>
       </div>
     </>

@@ -11,6 +11,7 @@ import { toggleCartHidden } from "redux/cart/cartActions";
 const CartDropdown = ({ cartItems, history, dispatch }) => {
   const url = cartItems.length > 0 ? "/checkout" : "/shop";
   const btnText = cartItems.length > 0 ? "Go to checkout" : "Go shopping!";
+
   return (
     <div className="cart-dropdown">
       <div className="cart-items">

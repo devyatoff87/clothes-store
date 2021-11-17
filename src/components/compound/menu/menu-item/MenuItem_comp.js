@@ -11,7 +11,9 @@ const MenuItem = ({ title, linkUrl, imageUrl, size, history, match }) => {
   return (
     <div onClick={clickHandle} className={menuItemStyle}>
       <div
-        style={{ backgroundImage: `url(${imageUrl})` }}
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+        }}
         className={"background-image"}
       ></div>
       <div className={"content"}>

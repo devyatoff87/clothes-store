@@ -1,6 +1,10 @@
 .checkout-item {
   height: 100%;
 
+  &:nth-last-of-type(even) {
+    background: whitesmoke;
+  }
+
   .image-container {
     img {
       width: 100%;

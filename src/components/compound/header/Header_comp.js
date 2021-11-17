@@ -14,6 +14,7 @@ import { selectCartHidden } from "redux/cart/cartSelectors";
 const HeaderComp = ({ currentUser, hidden }) => {
   return (
     <div className={"header"}>
+      {/* <ClickOutsideToClose bgColor="#7c7c7c7d" callback={toggleCartHidden} /> */}
       <div className={"container"}>
         <div className={"header-inner"}>
           <div className={"logo-container"}>
@@ -22,7 +23,7 @@ const HeaderComp = ({ currentUser, hidden }) => {
             </Link>
           </div>
           <div className={"options"}>
-            <Link to={"shop"} className={"option"}>
+            <Link to={`/shop`} className={"option"}>
               Shop
             </Link>
             {currentUser ? (
@@ -34,7 +35,7 @@ const HeaderComp = ({ currentUser, hidden }) => {
                 Sign in
               </Link>
             )}
-            <Link to={"contact"} className={"option"}>
+            <Link to={"/contact"} className={"option"}>
               Contact
             </Link>
             <CartIcon />

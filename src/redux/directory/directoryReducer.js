@@ -1,7 +1,7 @@
-import sections_ from "../../data/directory-data.json";
+import { imgs } from "data/directory-data.js";
 
 const init = {
-  sections: sections_,
+  sections: imgs,
 };
 
 const direcotryReducer = (state = init, action) => {

@@ -5,12 +5,12 @@ import { addNewItemToCart } from "redux/cart/cartActions";
 import { connect } from "react-redux";
 
 const ColectionItem = ({ item, addNewItem }) => {
-  const { imageUrl, name, price } = item;
+  const { imageUrl, imageUrlLocal, name, price } = item;
   return (
     <div className={"collection-item"}>
       <div
         className={"image"}
-        style={{ backgroundImage: `url(${imageUrl})` }}
+        style={{ backgroundImage: `url(${imageUrlLocal})` }}
       ></div>
       <div className={"collection-footer"}>
         <div className={"name"}>{name}</div>

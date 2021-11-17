@@ -6,9 +6,9 @@ import { auth, signInWithGoogle } from "firebase/firebaseUtils";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 
 const SignIn = () => {
-  const initState = { email: "", password: "" };
+  const initVal = { email: "", password: "" };
 
-  const [state, setState] = useState(initState);
+  const [state, setState] = useState(initVal);
 
   const onSubmitHandle = async (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const SignIn = () => {
     }
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setState(initState);
+      setState(initVal);
     } catch (err) {
       console.error(err);
     }
@@ -55,7 +55,7 @@ const SignIn = () => {
           </Button>
           <Button
             additionalStyles={"custom-button mt-2"}
-            onClickProps={signInWithGoogle}
+            onClickProps={() => signInWithGoogle(auth)}
           >
             Sign in with google
           </Button>

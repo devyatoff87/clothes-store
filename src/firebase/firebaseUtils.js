@@ -42,8 +42,11 @@ export const createUserProfileDoc = async (userAuth, payload) => {
         ...payload,
       });
     } catch {
-      console.log("error");
+      console.log("error!!!!!!!!!!!!!!!");
     }
+  }
+  if (!userRef) {
+    return;
   }
   return userRef;
 };
@@ -51,9 +54,20 @@ export const createUserProfileDoc = async (userAuth, payload) => {
 export const getUsers = async () => {
   const userRef = collection(db, "users");
   let users = await getDocs(userRef);
-  return users;
+  if (users) {
+    return users;
+  }
 };
 
 const provider = new GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => signInWithRedirect(auth, provider);
+if (provider && auth) {
+  provider.setCustomParameters({ prompt: "select_account" });
+}
+
+export const signInWithGoogle = (auth) => {
+  if (auth && provider) {
+    return signInWithRedirect(auth, provider);
+  } else {
+    console.log("error");
+  }
+};
