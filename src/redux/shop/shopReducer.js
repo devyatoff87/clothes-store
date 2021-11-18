@@ -1,4 +1,4 @@
-import { shopItems } from "data/shop-data.js";
+import shopItems from "../../data/shop-data.json";
 
 const init = {
   collections: shopItems,

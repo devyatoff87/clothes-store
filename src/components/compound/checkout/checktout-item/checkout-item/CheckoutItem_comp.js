@@ -12,7 +12,7 @@ const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
   return (
     <tr className="checkout-item">
       <td className="image-container">
-        <img src={imageUrl} alt="" />
+        <img className="img_" src={imageUrl} alt="" />
       </td>
       <td className="name">{name}</td>
       <td>

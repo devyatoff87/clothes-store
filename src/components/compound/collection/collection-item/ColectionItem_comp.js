@@ -9,8 +9,8 @@ const ColectionItem = ({ item, addNewItem }) => {
   return (
     <div className={"collection-item"}>
       <div
-        className={"image"}
-        style={{ backgroundImage: `url(${imageUrlLocal})` }}
+        className={"image img_"}
+        style={{ backgroundImage: `url(${imageUrl})` }}
       ></div>
       <div className={"collection-footer"}>
         <div className={"name"}>{name}</div>

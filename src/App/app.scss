@@ -24,6 +24,13 @@ html {
   padding: 0;
 }
 
+body {
+  &.overflow-hidden {
+    overflow-block: hidden;
+    margin-right: 17px;
+  }
+}
+
 // .container {
 //   max-width: 80%;
 //   margin: 0 auto;

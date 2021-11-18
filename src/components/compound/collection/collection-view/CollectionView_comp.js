@@ -3,7 +3,6 @@ import "./CollectionView_style.scss";
 import CollectionItem from "components/compound/collection/collection-item/ColectionItem_comp";
 
 const ColectionView = ({ title, items }) => {
-  console.log(items);
   return (
     <div className={"d-flex flex-column mb-5"}>
       <h2 className={"title"}>{title}</h2>

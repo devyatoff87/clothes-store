@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import imgPlaceholder from "utiles/imgPlaceholder";
 import "./CartItem_style.scss";
 
 const CartItem = ({ item }) => {
   const { imageUrl, name, price, quantity } = item;
   return (
     <div className="cart-item">
-      <img src={imageUrl} alt="item" />
+      <img className={"img_"} src={imageUrl} alt="item" />
       <div className="details">
         <span className="name">{name}</span>
         <span className="price">

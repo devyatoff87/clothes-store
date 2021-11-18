@@ -8,8 +8,17 @@ import { setCurrentUser } from "redux/user/userActions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "redux/user/userSelectors";
 import App from "./App_UI";
-
+import imgPlaceholder from "utiles/imgPlaceholder";
 const AppMain = ({ currentUser }) => {
+  const [state, setState] = useState(0);
+  useEffect(() => {
+    imgPlaceholder().then((res) => {
+      if (!res) {
+        setState((prev) => prev + 1);
+      }
+    });
+  }, [state]);
+
   const [users, setUsers] = useState(null);
 
   useEffect(() => {

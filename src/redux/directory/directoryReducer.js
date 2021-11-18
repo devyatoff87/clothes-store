@@ -1,4 +1,4 @@
-import { imgs } from "data/directory-data.js";
+import imgs from "../../data/directory-data.json";
 
 const init = {
   sections: imgs,

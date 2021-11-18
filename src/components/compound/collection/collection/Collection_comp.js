@@ -3,6 +3,7 @@ import CollectionItem from "components/compound/collection/collection-item/Colec
 import { connect } from "react-redux";
 import { selectCollection } from "redux/shop/shopSelector";
 import "./Collection_style.scss";
+
 const Collection = ({ collection, match }) => {
   const { title, items } = collection;
   let pageTitle = match.params.collectionId;

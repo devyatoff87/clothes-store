@@ -13,7 +13,7 @@ const MenuItemlist = ({ items }) => {
         return (
           <MenuItem
             title={item.title}
-            imageUrl={item.imageUrlLocal}
+            imageUrl={item.imageUrl}
             id={item.id}
             linkUrl={item.linkUrl}
             size={item.size}
