@@ -7,7 +7,7 @@ import IndexCheckout from "components/compound/checkout/index";
 const Checkout = () => {
   document.title = "Checkout";
   return (
-    <div className="container">
+    <div className="container page-content">
       <div className="checkout-page">
         <IndexCheckout />
       </div>

@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
 import {
   getFirestore,
   collection,
@@ -7,21 +8,35 @@ import {
   getDocs,
   setDoc,
 } from "firebase/firestore";
-import { getAuth, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
 
-const config = {
+// Import the functions you need from the SDKs you need
+
+
+// TODO: Add SDKs for Firebase products that you want to use
+
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+
+// Your web app's Firebase configuration
+
+const firebaseConfig = {
   apiKey: "AIzaSyAoP_7TaElU_EsmIKDxqVatPVACdA63QQ8",
   authDomain: "clothes-store-b26e2.firebaseapp.com",
   projectId: "clothes-store-b26e2",
   storageBucket: "clothes-store-b26e2.appspot.com",
   messagingSenderId: "690348026200",
-  appId: "1:690348026200:web:111eeab9b0240c369a5d2d",
+  appId: "1:690348026200:web:111eeab9b0240c369a5d2d"
+
 };
 
-let app = initializeApp(config);
 
-export const db = getFirestore(app);
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);
+
+export const db = getFirestore(app)
 export const auth = getAuth(app);
+
 
 export const createUserProfileDoc = async (userAuth, payload) => {
   if (!userAuth) {
@@ -29,9 +44,10 @@ export const createUserProfileDoc = async (userAuth, payload) => {
   }
   const userRef = doc(db, "users", userAuth.uid);
   const snapshot = await getDoc(userRef);
-
+  console.log(snapshot)
   if (!snapshot.exists()) {
     const { displayName, email } = userAuth;
+
     const createdAt = new Date();
 
     try {
@@ -45,17 +61,20 @@ export const createUserProfileDoc = async (userAuth, payload) => {
       console.log("error!!!!!!!!!!!!!!!");
     }
   }
-  if (!userRef) {
-    return;
-  }
+
   return userRef;
 };
 
 export const getUsers = async () => {
-  const userRef = collection(db, "users");
-  let users = await getDocs(userRef);
-  if (users) {
+  try {
+    const userRef = collection(db, "users");
+    let users = await getDocs(userRef);
+
     return users;
+
+  } catch (error) {
+    console.log("err-msg:")
+    console.log(error)
   }
 };
 
@@ -65,9 +84,5 @@ if (provider && auth) {
 }
 
 export const signInWithGoogle = (auth) => {
-  if (auth && provider) {
-    return signInWithRedirect(auth, provider);
-  } else {
-    console.log("error");
-  }
+  return signInWithRedirect(auth, provider);
 };

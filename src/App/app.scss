@@ -2,6 +2,7 @@
 @import url("../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css");
 
 @media only screen and (max-width: 540px) {
+
   .container,
   .container-fluid,
   .container-lg,
@@ -29,6 +30,16 @@ body {
     overflow-block: hidden;
     margin-right: 17px;
   }
+}
+
+// #root {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+// }
+
+.page-content {
+  min-height: 650px;
 }
 
 // .container {
@@ -94,4 +105,16 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  width: 92% !important;
 }

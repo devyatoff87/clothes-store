@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import imgPlaceholder from "utiles/imgPlaceholder";
+import React from "react";
 import "./CartItem_style.scss";
 
 const CartItem = ({ item }) => {

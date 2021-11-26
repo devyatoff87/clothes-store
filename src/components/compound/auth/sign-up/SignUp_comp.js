@@ -30,8 +30,6 @@ const SignUp = () => {
         password
       );
 
-      console.log(user);
-
       createUserProfileDoc(user, { displayName });
       stateState(init);
     } catch (error) {

@@ -6,9 +6,11 @@ import CartItem from "../cart-item/CartItem_comp";
 import { selectCartItems } from "redux/cart/cartSelectors";
 import { createStructuredSelector } from "reselect";
 import { withRouter } from "react-router";
+import { selectCartHidden } from "redux/cart/cartSelectors";
+import { toggleCloseByOutsideClick } from "redux/layout/layoutActions";
 import { toggleCartHidden } from "redux/cart/cartActions";
 
-const CartDropdown = ({ cartItems, history, dispatch }) => {
+const CartDropdown = ({ cartItems, history, hideCart, clickOutsideToggle }) => {
   const url = cartItems.length > 0 ? "/checkout" : "/shop";
   const btnText = cartItems.length > 0 ? "Go to checkout" : "Go shopping!";
 
@@ -26,7 +28,8 @@ const CartDropdown = ({ cartItems, history, dispatch }) => {
       <Button
         onClickProps={() => {
           history.push(url);
-          dispatch(toggleCartHidden());
+          hideCart()
+          clickOutsideToggle()
         }}
       >
         {btnText}
@@ -37,12 +40,16 @@ const CartDropdown = ({ cartItems, history, dispatch }) => {
 
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
+  hiddenCart: selectCartHidden
 });
 
-// const mapDispatchToProps = (dispatch) => {
-//   return { hideCart: () => dispatch(toggleCartHidden(false)) };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hideCart: () => dispatch(toggleCartHidden()),
+    clickOutsideToggle: () => dispatch(toggleCloseByOutsideClick()),
+  };
+};
 
 //if second argument of connect misses - mapStateToProps will pass dispatch into component props automatically
 //no mapDispatchToProps needed in this case
-export default withRouter(connect(mapStateToProps)(CartDropdown));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartDropdown));

@@ -1,8 +1,11 @@
-import header_context from "components/compound/header/header_context";
 import React, { useContext, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectClickByOutside } from "redux/layout/layoutSelector";
+import { toggleCloseByOutsideClick } from "redux/layout/layoutActions";
+import { toggleCartHidden } from "redux/cart/cartActions";
 
-const ClickOutsideToClose = ({ bgColor }) => {
-  const context = useContext(header_context);
+const ClickOutsideToClose = ({ bgColor, clickOutsideToggle, hideCart }) => {
 
   const styles = {
     position: "absolute",
@@ -19,11 +22,25 @@ const ClickOutsideToClose = ({ bgColor }) => {
   return (
     <div
       onClick={() => {
-        context.toggleShow();
+        // context.toggleShow();
+        clickOutsideToggle()
+        hideCart()
       }}
       style={styles}
     ></div>
   );
 };
 
-export default ClickOutsideToClose;
+const mapStateToProps = createStructuredSelector({
+  clickOutside: selectClickByOutside
+})
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clickOutsideToggle: () => dispatch(toggleCloseByOutsideClick()),
+    hideCart: () => dispatch(toggleCartHidden())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClickOutsideToClose);

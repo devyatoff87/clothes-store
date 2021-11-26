@@ -5,11 +5,13 @@
   height: 350px;
   align-items: center;
   position: relative;
+  margin-bottom: 40px;
 
   .custom-button {
     position: absolute;
     bottom: 20%;
     opacity: 0.4;
+
     &:hover {
       opacity: 1;
     }
@@ -53,6 +55,7 @@
   .collection-item {
     width: 100%;
     margin-bottom: 32px;
+
     .collection-footer {
       font-size: 14px;
     }

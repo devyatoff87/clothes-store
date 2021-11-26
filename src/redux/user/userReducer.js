@@ -1,7 +1,12 @@
 import { USER_ACTIONS } from "./userActionTypes";
 
 const INIT_USER = {
-  currentUser: null,
+  currentUser: null
+  // currentUser: {
+  //   displayName: "Vladilen",
+  //   email: "v.devyatov@gmail.com",
+  //   password: "nopassword"
+  // },
 };
 
 const userReducer = (state = INIT_USER, action) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SignIn_style.scss";
 import FormInput from "components/simple/form-input/FormInput_comp";
 import Button from "components/simple/button/Button_comp";
@@ -6,16 +6,23 @@ import { auth, signInWithGoogle } from "firebase/firebaseUtils";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 
 const SignIn = () => {
-  const initVal = { email: "", password: "" };
 
+  const [success, setSuccess] = useState(false);
+  useEffect(() => {
+    window.navigator.onLine && setSuccess(true)
+  }, [])
+
+  const initVal = { email: "", password: "" };
   const [state, setState] = useState(initVal);
 
   const onSubmitHandle = async (e) => {
     e.preventDefault();
     const { email, password } = state;
-    if (email === "" && password === "") {
+    if (email === "" && password === "" || !success) {
+
       return;
     }
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setState(initVal);
@@ -28,6 +35,8 @@ const SignIn = () => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
+
+
 
   return (
     <div className={"sign-in"}>
@@ -55,7 +64,7 @@ const SignIn = () => {
           </Button>
           <Button
             additionalStyles={"custom-button mt-2"}
-            onClickProps={() => signInWithGoogle(auth)}
+            onClickProps={() => success && signInWithGoogle(auth)}
           >
             Sign in with google
           </Button>

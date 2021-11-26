@@ -8,57 +8,66 @@ import { setCurrentUser } from "redux/user/userActions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "redux/user/userSelectors";
 import App from "./App_UI";
-import imgPlaceholder from "utiles/imgPlaceholder";
-const AppMain = ({ currentUser }) => {
-  const [state, setState] = useState(0);
-  useEffect(() => {
-    imgPlaceholder().then((res) => {
-      if (!res) {
-        setState((prev) => prev + 1);
-      }
-    });
-  }, [state]);
+
+const AppMain = ({ currentUser, setCurrentUser }) => {
 
   const [users, setUsers] = useState(null);
 
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
-    getUsers().then((data) => {
-      if (!data) {
-        return;
-      }
-      setUsers((prev) => {
-        return (prev = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        })));
-      });
-    });
+    window.navigator.onLine && setSuccess(true)
+  }, [])
+
+  useEffect(() => {
+    success &&
+      getUsers()
+        .then((data) => {
+          if (!data) {
+            return;
+          }
+          setUsers((prev) => {
+            return (prev = data.docs.map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+            })));
+          });
+        })
+        .catch(err => {
+          console.log("err msg:")
+          console.log(err)
+        })
+
 
     let unsubscribe = onAuthStateChanged(auth, async (userAuth) => {
-      if (!auth && !userAuth) {
-        return;
-      }
-      if (userAuth && auth) {
-        const userRef = await createUserProfileDoc(userAuth);
-        onSnapshot(userRef, (snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
+      try {
+        if (!userAuth && !auth) {
+          const userRef = await createUserProfileDoc(userAuth);
+          onSnapshot(userRef, (snapshot) => {
+            console.log("snapshot" + snapshot);
+            setCurrentUser({
+              id: snapshot.id,
+              ...snapshot.data(),
+            });
           });
-        });
-        return;
-      } else if (!userAuth && !auth) {
-        console.log("no userAuth");
-        return;
-      }
-      if (userAuth && auth) {
-        setCurrentUser(userAuth);
+          return;
+        } else if (!userAuth && !auth) {
+          console.log("no userAuth");
+          return;
+        }
+        if (userAuth && auth) {
+          setCurrentUser(userAuth);
+        }
+      } catch (err) {
+        console.log("err msg:");
+        console.log(err);
       }
     });
 
     return () => {
-      unsubscribe();
+      success && unsubscribe();
     };
+
+
   }, []);
 
   return (

@@ -4,16 +4,16 @@ import { ReactComponent as ShoppingIcon } from "assets/icons/shopping-bag.svg";
 import { connect } from "react-redux";
 import { selectCartItemsCount } from "redux/cart/cartSelectors";
 import { createStructuredSelector } from "reselect";
-import { useContext } from "react";
-import HeaderContext from "components/compound/header/header_context";
+import { toggleCloseByOutsideClick } from "redux/layout/layoutActions";
+import { toggleCartHidden } from "redux/cart/cartActions";
 
-const CartIcon = ({ itemCount }) => {
-  const context = useContext(HeaderContext);
+const CartIcon = ({ itemCount, clickOutsideToggle, hideCart }) => {
 
   return (
     <div
       onClick={() => {
-        context.toggleShow();
+        clickOutsideToggle()
+        hideCart()
       }}
       className="cart-icon"
     >
@@ -31,4 +31,12 @@ const mapStateToProps = createStructuredSelector({
   itemCount: selectCartItemsCount,
 });
 
-export default connect(mapStateToProps, null)(CartIcon);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hideCart: () => dispatch(toggleCartHidden()),
+    clickOutsideToggle: () => dispatch(toggleCloseByOutsideClick())
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

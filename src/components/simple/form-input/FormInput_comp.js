@@ -1,5 +1,6 @@
 import React from "react";
 import "./Form_style.scss";
+import styled from "styled-components";
 
 const FormInput = ({ onChangeCallback, label, ...props }) => {
   return (

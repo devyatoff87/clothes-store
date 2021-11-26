@@ -6,7 +6,7 @@ import Collection_comp from "components/compound/collection/collection/Collectio
 
 const Shop = ({ match }) => {
   return (
-    <div>
+    <div className="page-content">
       <Route exact path={`${match.path}`} component={CollectionPreview} />
       <Route path={`${match.path}/:collectionId`} component={Collection_comp} />
     </div>

@@ -5,7 +5,7 @@ import "./Auth_page_style.scss";
 const Auth = () => {
   document.title = "Authorisation";
   return (
-    <div className="container">
+    <div className="container page-content">
       <div className="row">
         <div className="col-12 col-md-6">
           <SignIn />
