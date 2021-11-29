@@ -14,6 +14,12 @@
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --dirt-yel: #bcb106;
 }
@@ -42,57 +48,15 @@ body {
   min-height: 650px;
 }
 
-// .container {
-//   max-width: 80%;
-//   margin: 0 auto;
-//   &-narrow {
-//     max-width: 50%;
-//     margin: 0 auto;
-//   }
-//   &-wide {
-//     max-width: 94%;
-//     margin: 0 auto;
-//   }
-// }
+img {
+  max-width: 100%;
+  display: block;
+}
 
-// @media only screen and (max-width: 1400px) {
-//   .container {
-//     &-narrow {
-//       max-width: 50%;
-//       margin: 0 auto;
-//     }
-//   }
-// }
+p {
+  margin-top: 0.45em;
+}
 
-// @media only screen and (max-width: 1200px) {
-//   .container {
-//     &-narrow {
-//       max-width: 60%;
-//       margin: 0 auto;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 768px) {
-//   .container {
-//     max-width: 94%;
-//     &-narrow {
-//       max-width: 94%;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 579px) {
-//   .container {
-//     max-width: 97%;
-//     &-narrow {
-//       max-width: 97%;
-//     }
-//     &-wide {
-//       max-width: 97%;
-//     }
-//   }
-// }
 
 .msg-1 {
   font-weight: 600;

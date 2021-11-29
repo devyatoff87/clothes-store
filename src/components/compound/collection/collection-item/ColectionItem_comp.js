@@ -1,11 +1,14 @@
-import Button from "components/simple/button/Button_comp";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ColectionItem_style.scss";
+import Button from "components/simple/button/Button_comp";
 import { addNewItemToCart } from "redux/cart/cartActions";
 import { connect } from "react-redux";
 
 const ColectionItem = ({ item, addNewItem }) => {
-  const { imageUrl, imageUrlLocal, name, price } = item;
+
+
+  const { name, price, imageUrl } = item;
+
   return (
     <div className={"collection-item"}>
       <div

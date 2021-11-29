@@ -7,12 +7,12 @@ import { selectCartItems } from "redux/cart/cartSelectors";
 import { createStructuredSelector } from "reselect";
 import { withRouter } from "react-router";
 import { selectCartHidden } from "redux/cart/cartSelectors";
-import { toggleCloseByOutsideClick } from "redux/layout/layoutActions";
+import { closeModalOverflow } from "redux/layout/layoutActions";
 import { toggleCartHidden } from "redux/cart/cartActions";
 
 const CartDropdown = ({ cartItems, history, hideCart, clickOutsideToggle }) => {
   const url = cartItems.length > 0 ? "/checkout" : "/shop";
-  const btnText = cartItems.length > 0 ? "Go to checkout" : "Go shopping!";
+  const btnText = cartItems.length > 0 ? "To checkout" : "Go shopping!";
 
   return (
     <div className="cart-dropdown">
@@ -46,7 +46,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => {
   return {
     hideCart: () => dispatch(toggleCartHidden()),
-    clickOutsideToggle: () => dispatch(toggleCloseByOutsideClick()),
+    clickOutsideToggle: () => dispatch(closeModalOverflow()),
   };
 };
 

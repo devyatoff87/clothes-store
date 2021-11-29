@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectClickByOutside } from "redux/layout/layoutSelector";
-import { toggleCloseByOutsideClick } from "redux/layout/layoutActions";
+import { closeModalOverflow } from "redux/layout/layoutActions";
 import { toggleCartHidden } from "redux/cart/cartActions";
 
-const ClickOutsideToClose = ({ bgColor, clickOutsideToggle, hideCart }) => {
+const ClickOutsideToClose = ({ bgColor, hidden }) => {
 
   const styles = {
     position: "absolute",
@@ -17,17 +17,14 @@ const ClickOutsideToClose = ({ bgColor, clickOutsideToggle, hideCart }) => {
     overflow: "hidden",
   };
 
+
   styles.background = bgColor ? bgColor : "#00000061";
 
   return (
     <div
-      onClick={() => {
-        // context.toggleShow();
-        clickOutsideToggle()
-        hideCart()
-      }}
-      style={styles}
-    ></div>
+      onClick={() => { hidden() }}
+      style={styles} >
+    </div>
   );
 };
 
@@ -37,8 +34,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    clickOutsideToggle: () => dispatch(toggleCloseByOutsideClick()),
-    hideCart: () => dispatch(toggleCartHidden())
+    clickOutsideToggle: () => dispatch(closeModalOverflow()),
+    hidden: () => dispatch(toggleCartHidden())
   }
 }
 

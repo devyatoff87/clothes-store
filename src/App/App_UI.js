@@ -7,6 +7,7 @@ import Shop from "components/pages/shop/Shop_page";
 import Auth from "components/pages/auth/Auth_page";
 import Checkout from "components/pages/checkout/Checkout_page";
 import Footer from "components/compound/footer/Footer_comp";
+import Contact from "components/pages/contact/Contact_page";
 
 const App = ({ currentUser }) => {
   return (
@@ -21,6 +22,8 @@ const App = ({ currentUser }) => {
         <Route exact path="/" component={Home} />
         <Route path="/shop" component={Shop} />
         <Route exact path="/checkout" component={Checkout} />
+        <Route path="/contact" component={Contact} />
+
         <Route component={Home} />
       </Switch>
       <Footer />

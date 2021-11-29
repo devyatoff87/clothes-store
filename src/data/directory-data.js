@@ -1,29 +1,25 @@
-export const imgs = [
+export const directoryItemsLocal = [
   {
     title: "hats",
-    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-    imageUrlLocal: require("./images/hats.png").default,
+    imageUrl: require("./images/hats.png"),
     id: 1,
     linkUrl: "shop/hats",
   },
   {
     title: "jackets",
-    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-    imageUrlLocal: require("./images/jackets.png").default,
+    imageUrl: require("./images/jackets.png"),
     id: 2,
     linkUrl: "shop/jackets",
   },
   {
     title: "sneakers",
-    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-    imageUrlLocal: require("./images/sneakers.png").default,
+    imageUrl: require("./images/sneakers.png"),
     id: 3,
     linkUrl: "shop/sneakers",
   },
   {
     title: "womens",
-    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    imageUrlLocal: require("./images/womens.png").default,
+    imageUrl: require("./images/womens.png"),
 
     size: "large",
     id: 4,
@@ -31,8 +27,7 @@ export const imgs = [
   },
   {
     title: "mens",
-    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    imageUrlLocal: require("./images/men.png").default,
+    imageUrl: require("./images/men.png"),
 
     size: "large",
     id: 5,

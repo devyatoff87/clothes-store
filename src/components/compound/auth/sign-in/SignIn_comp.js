@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword } from "@firebase/auth";
 const SignIn = () => {
 
   const [success, setSuccess] = useState(false);
+
   useEffect(() => {
     window.navigator.onLine && setSuccess(true)
   }, [])
@@ -19,7 +20,6 @@ const SignIn = () => {
     e.preventDefault();
     const { email, password } = state;
     if (email === "" && password === "" || !success) {
-
       return;
     }
 
@@ -35,8 +35,6 @@ const SignIn = () => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
-
-
 
   return (
     <div className={"sign-in"}>

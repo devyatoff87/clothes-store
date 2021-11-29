@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./menuItem.scss";
 import { withRouter } from "react-router";
 
-const MenuItem = ({ title, linkUrl, imageUrl, size, history, match }) => {
-  const menuItemStyle = size ? `${size} menu-item` : "menu-item";
+const MenuItem = ({ item, history, match }) => {
   const clickHandle = () => {
     history.push(`${match.url}${linkUrl}`);
   };
+
+  const { title, size, linkUrl, imageUrl } = item;
+
+  const menuItemStyle = size ? `${size} menu-item` : "menu-item";
 
   return (
     <div onClick={clickHandle} className={menuItemStyle}>
