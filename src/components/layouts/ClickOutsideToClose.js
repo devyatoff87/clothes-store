@@ -5,6 +5,7 @@ import { selectClickByOutside } from "redux/layout/layoutSelector";
 import { closeModalOverflow } from "redux/layout/layoutActions";
 import { toggleCartHidden } from "redux/cart/cartActions";
 
+
 const ClickOutsideToClose = ({ bgColor, hidden }) => {
 
   const styles = {
@@ -38,6 +39,8 @@ const mapDispatchToProps = (dispatch) => {
     hidden: () => dispatch(toggleCartHidden())
   }
 }
+
+
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClickOutsideToClose);

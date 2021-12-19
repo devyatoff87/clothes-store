@@ -48,6 +48,11 @@ body {
   min-height: 650px;
 }
 
+.stickTop {
+  position: fixed;
+  top: 0;
+}
+
 img {
   max-width: 100%;
   display: block;

@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCollections } from "redux/shop/shopSelector";
-import ColectionView from "../collection-view/CollectionView_comp";
+import ColectionGroup from "../collection-group/CollectionGroup_comp";
+import { addDataToFirestore } from "firebase/firebaseUtils";
 
-const collectionPreview = ({ collections }) => {
+const CollectionPreview = ({ collections }) => {
+  useEffect(() => {
+
+    // addDataToFirestore("collections", collections.map(({ title, items }) => ({ title, items })))
+
+  })
   return (
     <div className={"container"}>
       <div>
         {collections.map(({ id, ...otherProps }) => {
-          return <ColectionView key={id} {...otherProps} />;
+          return <ColectionGroup key={id} {...otherProps} />;
         })}
       </div>
     </div>
@@ -20,4 +26,4 @@ const mapStateToProps = createStructuredSelector({
   collections: selectCollections,
 });
 
-export default connect(mapStateToProps, null)(collectionPreview);
+export default connect(mapStateToProps, null)(CollectionPreview);

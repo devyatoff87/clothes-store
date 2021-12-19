@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./menuItem.scss";
-import { withRouter } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { Link } from "react-router-dom";
 
-const MenuItem = ({ item, history, match }) => {
-  const clickHandle = () => {
-    history.push(`${match.url}${linkUrl}`);
-  };
+const MenuItem = ({ item }) => {
+  const location = useLocation();
+
+  const navigate = useNavigate()
 
   const { title, size, linkUrl, imageUrl } = item;
-
   const menuItemStyle = size ? `${size} menu-item` : "menu-item";
 
   return (
-    <div onClick={clickHandle} className={menuItemStyle}>
+    <div onClick={() => navigate(linkUrl)} className={menuItemStyle}>
       <div
         style={{
           backgroundImage: `url(${imageUrl})`,
@@ -27,4 +27,4 @@ const MenuItem = ({ item, history, match }) => {
   );
 };
 
-export default withRouter(MenuItem);
+export default MenuItem;

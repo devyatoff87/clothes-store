@@ -4,7 +4,6 @@ import FormInput from "components/simple/form-input/FormInput_comp";
 import Button from "components/simple/button/Button_comp";
 import { auth, signInWithGoogle } from "firebase/firebaseUtils";
 import { signInWithEmailAndPassword } from "@firebase/auth";
-
 const SignIn = () => {
 
   const [success, setSuccess] = useState(false);
@@ -22,7 +21,7 @@ const SignIn = () => {
     if (email === "" && password === "" || !success) {
       return;
     }
-
+    console.log("rerender")
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setState(initVal);

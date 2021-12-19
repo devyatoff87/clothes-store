@@ -7,13 +7,13 @@ import { connect } from "react-redux";
 import { setCurrentUser } from "redux/user/userActions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "redux/user/userSelectors";
-import App from "./App_UI";
+import Auth_UI from "./Auth_UI";
 
-const AppMain = ({ currentUser, setCurrentUser }) => {
+const AppAuth = ({ currentUser, setCurrentUser }) => {
 
   const [users, setUsers] = useState(null);
-
   const [success, setSuccess] = useState(false);
+
   useEffect(() => {
     window.navigator.onLine && setSuccess(true)
   }, [])
@@ -36,7 +36,6 @@ const AppMain = ({ currentUser, setCurrentUser }) => {
           console.log("err msg:")
           console.log(err)
         })
-
 
     let unsubscribe = onAuthStateChanged(auth, async (userAuth) => {
       try {
@@ -72,7 +71,7 @@ const AppMain = ({ currentUser, setCurrentUser }) => {
 
   return (
     <>
-      <App currentUser={currentUser} />
+      <Auth_UI currentUser={currentUser} />
     </>
   );
 };
@@ -85,4 +84,4 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppMain);
+export default connect(mapStateToProps, mapDispatchToProps)(AppAuth);

@@ -9,8 +9,7 @@ function ContactRightSide() {
     const [state, setState] = useState(initVal);
 
     const onChangeHandle = (e) => {
-        const { name, value } = e.target;
-        console.log(name, value)
+        const { name = "", value = "" } = e.target;
         setState({ ...state, [name]: value });
     };
 

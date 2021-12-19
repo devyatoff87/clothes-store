@@ -5,9 +5,9 @@ function ContactLeftSide() {
     const [img, setImg] = useState("")
 
     useEffect(() => {
-        const imgSrc = require("../../../data/images/google-card.png");
-        setImg(imgSrc);
-        console.log("huhu")
+        const imgUrl = require("../../../data/images/google-card.png").default;
+        setImg(imgUrl);
+        console.log(img)
     }, [])
 
     return (

@@ -16,6 +16,7 @@ export const directoryItemsLocal = [
     imageUrl: require("./images/sneakers.png"),
     id: 3,
     linkUrl: "shop/sneakers",
+
   },
   {
     title: "womens",

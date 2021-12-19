@@ -7,16 +7,12 @@ import {
   getDoc,
   getDocs,
   setDoc,
+  writeBatch
 } from "firebase/firestore";
 
 // Import the functions you need from the SDKs you need
-
-
 // TODO: Add SDKs for Firebase products that you want to use
-
 // https://firebase.google.com/docs/web/setup#available-libraries
-
-
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
@@ -33,7 +29,6 @@ const firebaseConfig = {
 // Initialize Firebase
 
 const app = initializeApp(firebaseConfig);
-
 export const db = getFirestore(app)
 export const auth = getAuth(app);
 
@@ -77,6 +72,17 @@ export const getUsers = async () => {
     console.log(error)
   }
 };
+
+export const addDataToFirestore = (key, objToAdd) => {
+  const collectionRef = collection(db, key);
+  const batch = writeBatch(db);
+
+  objToAdd.forEach((objVal) => {
+    const newDocRef = doc(collectionRef);
+    batch.set(newDocRef, objVal)
+  })
+  batch.commit()
+}
 
 const provider = new GoogleAuthProvider();
 if (provider && auth) {

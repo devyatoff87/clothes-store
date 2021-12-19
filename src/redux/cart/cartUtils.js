@@ -27,3 +27,4 @@ export const removeItem = (cartItems, cartItemToRemove) => {
       : cartItem
   );
 };
+

@@ -5,14 +5,17 @@ import { connect } from "react-redux";
 import CartItem from "../cart-item/CartItem_comp";
 import { selectCartItems } from "redux/cart/cartSelectors";
 import { createStructuredSelector } from "reselect";
-import { withRouter } from "react-router";
 import { selectCartHidden } from "redux/cart/cartSelectors";
 import { closeModalOverflow } from "redux/layout/layoutActions";
 import { toggleCartHidden } from "redux/cart/cartActions";
+import { useNavigate } from "react-router-dom";
 
-const CartDropdown = ({ cartItems, history, hideCart, clickOutsideToggle }) => {
+const CartDropdown = ({ cartItems, hideCart, clickOutsideToggle }) => {
+
+  const navigate = useNavigate()
+
   const url = cartItems.length > 0 ? "/checkout" : "/shop";
-  const btnText = cartItems.length > 0 ? "To checkout" : "Go shopping!";
+  const btnText = cartItems.length > 0 ? "To checkout" : "To shop";
 
   return (
     <div className="cart-dropdown">
@@ -27,10 +30,11 @@ const CartDropdown = ({ cartItems, history, hideCart, clickOutsideToggle }) => {
       </div>
       <Button
         onClickProps={() => {
-          history.push(url);
+          navigate(url)
           hideCart()
           clickOutsideToggle()
         }}
+        inverted={"inverted"}
       >
         {btnText}
       </Button>
@@ -52,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
 
 //if second argument of connect misses - mapStateToProps will pass dispatch into component props automatically
 //no mapDispatchToProps needed in this case
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartDropdown));
+export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown)

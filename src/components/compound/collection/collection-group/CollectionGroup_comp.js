@@ -1,8 +1,8 @@
 import React from "react";
-import "./CollectionView_style.scss";
+import "./CollectionGroup_style.scss";
 import CollectionItem from "components/compound/collection/collection-item/ColectionItem_comp";
 
-const ColectionView = ({ title, items }) => {
+const ColectionGroup = ({ title, items }) => {
   return (
     <div className={"d-flex flex-column mb-5"}>
       <h2 className={"title"}>{title}</h2>
@@ -17,4 +17,4 @@ const ColectionView = ({ title, items }) => {
   );
 };
 
-export default ColectionView;
+export default ColectionGroup;

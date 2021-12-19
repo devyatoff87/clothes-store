@@ -2,14 +2,19 @@ import React from "react";
 import CollectionItem from "components/compound/collection/collection-item/ColectionItem_comp";
 import { connect } from "react-redux";
 import { selectCollection } from "redux/shop/shopSelector";
-import "./Collection_style.scss";
+import "./CollectionItSelf_style.scss";
+import { useParams } from "react-router";
+import { createPageTitle } from "utiles/createPageTitle";
 
-const Collection = ({ collection, match }) => {
+const Collection = ({ state }) => {
+
+  let collectionId = useParams()
+  collectionId = Object.values(collectionId)[0];
+  const collection = selectCollection(collectionId)(state);
   const { title, items } = collection;
-  let pageTitle = match.params.collectionId;
-  let fstLetter = pageTitle.charAt(0).toUpperCase();
-  pageTitle = fstLetter + pageTitle.slice(1, pageTitle.length - 1);
-  document.title = pageTitle;
+
+  document.title = createPageTitle(collectionId)
+
   return (
     <div className="container">
       <div className={"d-flex flex-column mb-5"}>
@@ -27,7 +32,8 @@ const Collection = ({ collection, match }) => {
 const mapStateToProps = (state, ownProps) => {
   return {
     //second parameter are props of this component
-    collection: selectCollection(ownProps.match.params.collectionId)(state),
+    // collection: selectCollection(ownProps.match.params.collectionId)(state),
+    state: state
   };
 };
 

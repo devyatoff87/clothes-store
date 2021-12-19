@@ -5,6 +5,7 @@ import { selectCartItems, selectCartTotal } from "redux/cart/cartSelectors";
 import { createStructuredSelector } from "reselect";
 import { removeAll } from "redux/cart/cartActions";
 import ClickOutsideToClose from "components/layouts/ClickOutsideToClose";
+//@ts-check
 
 const Checkoutfooter = ({ total = 0, cartItems, dispatch }) => {
   const priceForStripe = total * 100;
@@ -19,8 +20,6 @@ const Checkoutfooter = ({ total = 0, cartItems, dispatch }) => {
   useEffect(() => {
     window.navigator.onLine && setSuccess(true)
   }, [])
-
-
 
   return (
     <div className="d-flex justify-content-between mt-4 w-100">

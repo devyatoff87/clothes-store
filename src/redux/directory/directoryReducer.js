@@ -1,17 +1,11 @@
 import directoryItemsOnline from "../../data/directory-data.json";
 import { directoryItemsLocal } from "../../data/directory-data.js"
 
-const imgs = (() => {
-  if (window.navigator.onLine) {
-    return directoryItemsOnline
-  }
-  return directoryItemsLocal
-})()
 
-
+const directoryItems = window.navigator.onLine ? directoryItemsOnline : directoryItemsLocal
 
 const init = {
-  sections: imgs,
+  sections: directoryItems,
 };
 
 const direcotryReducer = (state = init, action) => {

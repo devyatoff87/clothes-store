@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TextArea({ onChangeCallback, label, ...props }) {
+function TextArea({ onChangeCallback = () => { }, label = "", ...props }) {
     return (
         <div className={"input-group"}>
             <textarea

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Header_style.scss";
 import { ReactComponent as Logo } from "../../../data/crown.svg";
 import { Link } from "react-router-dom";
@@ -12,8 +12,26 @@ import { selectCurrentUser } from "redux/user/userSelectors";
 import { selectCartHidden } from "redux/cart/cartSelectors";
 import ClickOutsideToClose from "components/layouts/ClickOutsideToClose";
 import { toggleCartHidden } from "redux/cart/cartActions";
+import { signOutCurrentUser, signOutError } from "redux/user/userActions";
 
-const HeaderComp = ({ currentUser, hidden }) => {
+const HeaderComp = ({ currentUser, hidden, signOutSuccess, signOutError }) => {
+
+  const [log, setLog] = useState(false);
+  useEffect(() => {
+    if (currentUser) {
+      setLog(true)
+    }
+  }, [])
+
+  const signOutHanlde = async () => {
+    try {
+      await signOut(auth);
+      signOutSuccess()
+    } catch (err) {
+      signOutError(err)
+    }
+  };
+
   return (
     <div className={"header"}>
       <div className={"container"}>
@@ -27,15 +45,16 @@ const HeaderComp = ({ currentUser, hidden }) => {
             <Link to={`/shop`} className={"option"}>
               Shop
             </Link>
-            {currentUser ? (
-              <div className={"option"} onClick={() => signOut(auth)}>
-                Sign out
-              </div>
-            ) : (
-              <Link to={"/auth"} className={"option"}>
-                Sign in
-              </Link>
-            )}
+            {
+              currentUser && log ? (
+                <div className={"option"} onClick={signOutHanlde}>
+                  Sign out
+                </div>
+              ) : (
+                <Link to={"/auth"} className={"option"}>
+                  Sign in
+                </Link>
+              )}
             <CartIcon />
           </div>
           {hidden ? <CartDropdown /> : null}
@@ -52,7 +71,11 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => {
-  return { hideModal: () => dispatch(toggleCartHidden) }
+  return {
+    // hideModal: () => dispatch(toggleCartHidden),
+    signOutSuccess: () => dispatch(signOutCurrentUser()),
+    signOutErr: (err) => dispatch(signOutError(err))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderComp);

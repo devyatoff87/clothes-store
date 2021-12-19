@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SignIn from "components/compound/auth/sign-in/SignIn_comp";
 import SignUp from "components/compound/auth/sign-up/SignUp_comp";
 import "./Auth_page_style.scss";
-const Auth = () => {
+import { Navigate, useNavigate } from "react-router";
+
+const Auth = ({ currentUser }) => {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) {
+      setUser(true)
+    }
+    user && navigate("/", { replace: true })
+  });
   document.title = "Authorisation";
+
   return (
     <div className="container page-content">
       <div className="row">
@@ -15,7 +27,8 @@ const Auth = () => {
         </div>
       </div>
     </div>
-  );
+
+  )
 };
 
 export default Auth;
