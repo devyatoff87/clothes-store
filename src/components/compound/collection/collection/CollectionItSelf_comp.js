@@ -1,20 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CollectionItem from "components/compound/collection/collection-item/ColectionItem_comp";
 import { connect } from "react-redux";
 import { selectCollection } from "redux/shop/shopSelector";
 import "./CollectionItSelf_style.scss";
 import { useParams } from "react-router";
-import { createPageTitle } from "utiles/createPageTitle";
+import { createPageTitle, convertObjToArr } from "utiles/utilFuncs";
 
-const Collection = ({ state }) => {
 
-  let collectionId = useParams()
-  collectionId = Object.values(collectionId)[0];
-  const collection = selectCollection(collectionId)(state);
-  const { title, items } = collection;
+const Collection = ({ collection }) => {
 
-  document.title = createPageTitle(collectionId)
-
+  const { title, items } = collection
+  //  document.title = createPageTitle(collectionId)
   return (
     <div className="container">
       <div className={"d-flex flex-column mb-5"}>
@@ -29,11 +25,11 @@ const Collection = ({ state }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, { path }) => {
   return {
     //second parameter are props of this component
     // collection: selectCollection(ownProps.match.params.collectionId)(state),
-    state: state
+    collection: selectCollection(path)(state)
   };
 };
 

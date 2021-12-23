@@ -3,7 +3,7 @@ import "./Header_style.scss";
 import { ReactComponent as Logo } from "../../../data/crown.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { auth } from "../../../firebase/firebaseUtils";
+import { auth } from "../../../firebase/fireAuth";
 import { signOut } from "firebase/auth";
 import CartIcon from "components/compound/cart/cart-icon/CartIcon_comp";
 import CartDropdown from "components/compound/cart/cart-dropdown/CartDropdown_comp";
@@ -11,17 +11,17 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "redux/user/userSelectors";
 import { selectCartHidden } from "redux/cart/cartSelectors";
 import ClickOutsideToClose from "components/layouts/ClickOutsideToClose";
-import { toggleCartHidden } from "redux/cart/cartActions";
 import { signOutCurrentUser, signOutError } from "redux/user/userActions";
 
 const HeaderComp = ({ currentUser, hidden, signOutSuccess, signOutError }) => {
 
   const [log, setLog] = useState(false);
+
   useEffect(() => {
     if (currentUser) {
       setLog(true)
     }
-  }, [])
+  })
 
   const signOutHanlde = async () => {
     try {

@@ -4,6 +4,8 @@ import "./menuItemList.scss";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectDirectorySections } from "redux/directory/directorySelector";
+
+
 const MenuItemlist = ({ items }) => {
 
   return (

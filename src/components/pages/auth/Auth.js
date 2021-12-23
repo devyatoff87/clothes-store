@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, createUserProfileDoc } from "firebase/firebaseUtils";
+import { auth, createUserProfileDoc, getUsers } from "firebase/fireAuth";
 import { onSnapshot } from "firebase/firestore";
-import { getUsers } from "firebase/firebaseUtils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "redux/user/userActions";
 import { createStructuredSelector } from "reselect";

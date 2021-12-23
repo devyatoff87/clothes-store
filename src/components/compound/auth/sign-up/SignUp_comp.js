@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FormInput from "components/simple/form-input/FormInput_comp";
 import Button from "components/simple/button/Button_comp";
 import { createUserWithEmailAndPassword } from "@firebase/auth";
-import { auth, createUserProfileDoc } from "firebase/firebaseUtils";
+import { auth, createUserProfileDoc } from "firebase/fireAuth";
 
 const SignUp = () => {
   const init = {

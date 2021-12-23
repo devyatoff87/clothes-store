@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./menuItem.scss";
-import { useLocation, useNavigate, useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate, } from "react-router";
 
 const MenuItem = ({ item }) => {
-  const location = useLocation();
 
   const navigate = useNavigate()
 
   const { title, size, linkUrl, imageUrl } = item;
   const menuItemStyle = size ? `${size} menu-item` : "menu-item";
-
   return (
     <div onClick={() => navigate(linkUrl)} className={menuItemStyle}>
       <div

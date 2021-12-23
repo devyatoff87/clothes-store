@@ -8,7 +8,6 @@ import Auth from "components/pages/auth/Auth";
 import Checkout from "components/pages/checkout/Checkout_page";
 import Footer from "components/compound/footer/Footer_comp";
 import Contact from "components/pages/contact/Contact_page";
-import FirestoreReq from "firestoreReq";
 const App = () => {
   return (
     <>
@@ -19,7 +18,6 @@ const App = () => {
         <Route path="shop/*" element={<Shop />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="a" element={<FirestoreReq />} />
         <Route element={<Home />} />
       </Routes>
       <Footer />

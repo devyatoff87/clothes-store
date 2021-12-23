@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./SignIn_style.scss";
 import FormInput from "components/simple/form-input/FormInput_comp";
 import Button from "components/simple/button/Button_comp";
-import { auth, signInWithGoogle } from "firebase/firebaseUtils";
+import { auth, signInWithGoogle } from "firebase/fireAuth";
 import { signInWithEmailAndPassword } from "@firebase/auth";
+
 const SignIn = () => {
 
   const [success, setSuccess] = useState(false);
