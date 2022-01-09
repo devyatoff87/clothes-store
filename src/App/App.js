@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./app.scss";
 import Header from "components/compound/header/Header_comp";
@@ -8,6 +8,8 @@ import Auth from "components/pages/auth/Auth";
 import Checkout from "components/pages/checkout/Checkout_page";
 import Footer from "components/compound/footer/Footer_comp";
 import Contact from "components/pages/contact/Contact_page";
+
+
 const App = () => {
   return (
     <>

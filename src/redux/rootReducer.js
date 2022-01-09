@@ -11,7 +11,7 @@ import layoutReducer from "./layout/layoutReducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart", "user", "shop"],
+  whitelist: ["cart", "user", "shop", "directory"],
 };
 
 const rootReducer = combineReducers({

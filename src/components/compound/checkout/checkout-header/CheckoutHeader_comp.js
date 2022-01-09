@@ -18,7 +18,6 @@ const CheckoutHeader = ({ total }) => {
 
     let myOberver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
-        console.log(entry.intersectionRatio)
         if (entry.intersectionRatio < 0.999) {
           entry.target.style.cssText = "position: fixed; top: 0";
         }

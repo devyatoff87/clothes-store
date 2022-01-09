@@ -32,8 +32,6 @@ const AppAuth = ({ currentUser, setCurrentUser }) => {
           });
         })
         .catch(err => {
-          console.log("err msg:")
-          console.log(err)
         })
 
     let unsubscribe = onAuthStateChanged(auth, async (userAuth) => {
@@ -41,7 +39,6 @@ const AppAuth = ({ currentUser, setCurrentUser }) => {
         if (!userAuth && !auth) {
           const userRef = await createUserProfileDoc(userAuth);
           onSnapshot(userRef, (snapshot) => {
-            console.log("snapshot" + snapshot);
             setCurrentUser({
               id: snapshot.id,
               ...snapshot.data(),
@@ -56,8 +53,6 @@ const AppAuth = ({ currentUser, setCurrentUser }) => {
           setCurrentUser(userAuth);
         }
       } catch (err) {
-        console.log("err msg:");
-        console.log(err);
       }
     });
 

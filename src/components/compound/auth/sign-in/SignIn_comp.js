@@ -22,7 +22,6 @@ const SignIn = () => {
     if (email === "" && password === "" || !success) {
       return;
     }
-    console.log("rerender")
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setState(initVal);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Header_style.scss";
-import { ReactComponent as Logo } from "../../../data/crown.svg";
+//import { ReactComponent as Logo } from "../../../data/crown.svg";
+import { ReactComponent as Logo } from "../../../data/logo.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { auth } from "../../../firebase/fireAuth";

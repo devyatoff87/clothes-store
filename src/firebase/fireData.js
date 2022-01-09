@@ -11,6 +11,7 @@ export const db = getFirestore(app)
 
 export const addDataToFirestore = (key, objToAdd) => {
     const collectionRef = collection(db, key);
+    //first fill batch with data to send data at once
     const batch = writeBatch(db);
 
     objToAdd.forEach((objVal) => {
@@ -32,15 +33,10 @@ export const collectionSnapshotToMap = (collections) => {
         }
     })
 
-    console.log(convertedCollection)
-
-    const reducedCollection = convertedCollection.reduce((acc, collection) => {
-        acc[collection.title.toLowerCase()] = collection;
-        return acc
+    const reducedCollection = convertedCollection.reduce((collectionsObject, collection) => {
+        collectionsObject[collection.title.toLowerCase()] = collection;
+        return collectionsObject
     }, {})
-
-    console.log(reducedCollection)
-
 
     return reducedCollection
 

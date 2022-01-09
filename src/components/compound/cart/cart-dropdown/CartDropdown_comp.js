@@ -54,6 +54,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-//if second argument of connect misses - mapStateToProps will pass dispatch into component props automatically
-//no mapDispatchToProps needed in this case
+// if second argument of connect misses 
+// - mapStateToProps will pass dispatch into component props automatically
+// no mapDispatchToProps needed in this case
 export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown)

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Footer_style.scss";
-import { ReactComponent as Logo } from "../../../data/crown.svg";
+//import { ReactComponent as Logo } from "../../../data/crown.svg";
+import { ReactComponent as Logo } from "../../../data/logo.svg";
 import { Link } from "react-router-dom";
 
 

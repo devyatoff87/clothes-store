@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MenuItem from "components/compound/menu/menu-item/MenuItem_comp";
 import "./menuItemList.scss";
 import { connect } from "react-redux";

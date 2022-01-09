@@ -19,7 +19,6 @@ export const createUserProfileDoc = async (userAuth, payload) => {
     }
     const userRef = doc(db, "users", userAuth.uid);
     const snapshot = await getDoc(userRef);
-    console.log(snapshot)
     if (!snapshot.exists()) {
         const { displayName, email } = userAuth;
 

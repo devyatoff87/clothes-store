@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./shop-style.scss";
 import CollectionPreview from "components/compound/collection/collection-preview/CollectionPreview_comp";
 import { Route, Routes, useParams } from "react-router-dom";
 import Collection from "components/compound/collection/collection/CollectionItSelf_comp";
-import { db, collectionSnapshotToMap } from "firebase/fireData";
-import { collection, getDocs } from "firebase/firestore";
-
-import { updateCollections } from "redux/shop/shopActions";
+import { fetchCollectionsStartAsync } from "redux/shop/shopActions";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectIsCollectionFetching } from "redux/shop/shopSelector";
+import Spinner from "components/HOCs/with-spinner/withSpinner";
 
-const Shop = ({ update }) => {
+
+const Shop = ({ fetchCollections, isFetching }) => {
 
   let params = useParams("title");
   let collectionId = Object.values(params)[0];
-
-  useEffect(() => {
-    const collRef = collection(db, "collections");
-
-    getDocs(collRef).then((snapshot) => {
-      const collectionsMap = collectionSnapshotToMap(snapshot);
-      update(collectionsMap)
-    })
-  })
 
 
   return (
@@ -34,8 +26,12 @@ const Shop = ({ update }) => {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  update: payload => dispatch(updateCollections(payload))
+const mapStateToProps = createStructuredSelector({
+  isFetching: selectIsCollectionFetching,
 })
 
-export default connect(null, mapDispatchToProps)(Shop);
+const mapDispatchToProps = (dispatch) => ({
+  fetchCollections: () => dispatch(fetchCollectionsStartAsync())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);
